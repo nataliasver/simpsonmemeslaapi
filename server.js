@@ -2,8 +2,10 @@ const express = require("express")
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const cors = require('cors')
 
 require("dotenv").config()
+
 
 
 const mongoUri = process.env.MONGO_URI
@@ -18,6 +20,7 @@ db.once("open", function () {
 });
 
 const server = express()
+server.use(cors())
 server.use(express.json());
 server.use(cookieParser());
 server.use(express.urlencoded({ extended: true }))
