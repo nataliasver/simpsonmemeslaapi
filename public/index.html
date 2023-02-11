@@ -15,8 +15,8 @@
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
+	<link rel="simpson-icon" sizes="76x76" href="/img/logo512.png">
+	<link rel="icon" type="image/ico" sizes="96x96" href="/img/favicon.ico">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 </head>
@@ -27,7 +27,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="index.html"><img src="img/logo192.png" width="20px" height="20px" alt="Simpson Memes LA Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -46,10 +46,11 @@
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Memes</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="#" class="">All memes &nbsp; <span class="label label-success">GET</span></a></li>
-									<li><a href="#" class="">Generate Token &nbsp; <span class="label label-primary">POST</span></a></li>
-									<li><a href="#" class="">Refresh Token &nbsp; <span class="label label-warning">PUT</span></a></li>
-									<li><a href="#" class="">Delete Token &nbsp; <span class="label label-danger">DELETE</span></a></li>
+									<li><a href="#allmemes" class="">All memes &nbsp; <span class="label label-success">GET</span></a></li>
+									<li><a href="#byId" class="">Search by Id &nbsp; <span class="label label-success">GET</span></a></li>
+									<li><a href="#byTitle" class="">Search by Title &nbsp; <span class="label label-success">GET</span></a></li>
+									<li><a href="#byEpisode" class="">Search by Episode &nbsp; <span class="label label-success">GET</span></a></li>
+									<li><a href="#byCharacter" class="">Search by Character &nbsp; <span class="label label-success">GET</span></a></li>
 								</ul>
 							</div>
 						</li>
@@ -62,9 +63,37 @@
 		<div class="main">
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
-				<div class="container-fluid">
-					<h3 class="page-title">Generate Token</h3>
-					<h4 class="page-title">Lorem ipsum dolor sit amet, <code>consectetur</code> adipiscing elit. Quisque nec venenatis est. Aliquam scelerisque bibendum volutpat. Donec vehicula tincidunt arcu, nec pellentesque neque dignissim eu. Duis a pretium sapien. Suspendisse efficitur eu metus ultrices suscipit. Mauris eget nulla a urna fermentum vulputate. Fusce ac leo rhoncus, convallis sem vel, blandit velit. Vestibulum pharetra dapibus nisi fermentum pretium. </h4>
+				<div class="container-fluid" id="allmemes">
+					<h3 class="page-title"><span class="label label-success">GET</span> /api/memes/memes</h3>
+					<h4 class="page-title">Devuelve un array de json con todos los <code>memes</code> </h4>
+					<div class="row">
+						<div class="col-md-5">
+							<!-- TABLE HOVER -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Response</h3>
+								</div>
+								<div class="panel-body">
+								<pre>{
+    "status": true,
+    "result_code": 200,
+    "message": "Success!",
+    "values": {
+        "name": "Kiddy",
+        "email": "kiddydhana@gmail.com",
+        "token": "9WUzKE7kCI1vSuQAbrmOwc2m2dk1NbPR",
+        "account_status": "1"
+    }
+}</pre>
+								</div>
+							</div>
+							<!-- END TABLE HOVER -->
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid" id="byId">
+					<h3 class="page-title"><span class="label label-success">GET</span> /api/memes/id?value=meme_id</h3>
+					<h4 class="page-title">Se pasa por query string un meme_id o un meme_id parcial (busca por regex). Devuelve todos los <code>memes</code> que correspondan con la query</h4>
 					<div class="row">
 						<div class="col-md-7">
 							<!-- TABLE HOVER -->
@@ -75,29 +104,29 @@
 								<div class="panel-body">
 									<table class="table table-hover">
 										<thead>
-											<tr>
-												<th>Parameter</th>
-												<th>Type</th>
-												<th>Position</th>
-												<th>#</th>
-												<th>Description</th>
-											</tr>
+										<tr>
+											<th>Parameter</th>
+											<th>Type</th>
+											<th>Position</th>
+											<th>#</th>
+											<th>Description</th>
+										</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>Authorization</td>
-												<td><code>string</code></td>
-												<td><code>Header</code></td>
-												<td><code>Required</code></td>
-												<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
-											</tr>
-											<tr>
-												<td>username</td>
-												<td><code>string</code></td>
-												<td><code>Body</code></td>
-												<td><code>Required</code></td>
-												<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec venenatis est. Aliquam scelerisque bibendum volutpat. Donec vehicula tincidunt arcu, nec pellentesque neque dignissim eu. </td>
-											</tr>
+										<tr>
+											<td>Authorization</td>
+											<td><code>string</code></td>
+											<td><code>Header</code></td>
+											<td><code>Required</code></td>
+											<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </td>
+										</tr>
+										<tr>
+											<td>username</td>
+											<td><code>string</code></td>
+											<td><code>Body</code></td>
+											<td><code>Required</code></td>
+											<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec venenatis est. Aliquam scelerisque bibendum volutpat. Donec vehicula tincidunt arcu, nec pellentesque neque dignissim eu. </td>
+										</tr>
 										</tbody>
 									</table>
 								</div>
