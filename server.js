@@ -21,7 +21,6 @@ const server = express()
 server.use(express.json());
 server.use(cookieParser());
 server.use(express.urlencoded({ extended: true }))
-server.use(express.static(path.resolve(__dirname, "../build")));
 
 server.listen(process.env.PORT || 4000, (err) => {
     err ? console.dir("Server failed...") : console.dir("Server running on port http://localhost:4000")
@@ -29,9 +28,8 @@ server.listen(process.env.PORT || 4000, (err) => {
 
 server.use("/api/memes", require("./api/memes/memes.routes"))
 server.use("/api/users", require("./api/users/users.routes"))
+server.use(express.static(path.resolve(__dirname, "public")));
 
-server.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'simpsonmemeslaapi','Readme.md'));
-});
+// server.use(express.static(path.join(__dirname, 'public')))
 
 module.exports = server;
