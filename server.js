@@ -31,7 +31,7 @@ server.use("/api/memes", require("./api/memes/memes.routes"))
 server.use("/api/users", require("./api/users/users.routes"))
 
 server.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Readme.md'));
+    res.sendFile(path.join(__dirname, '..','simpsonmemeslaapi','Readme.md'));
 });
 
 module.exports = server;
