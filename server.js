@@ -27,8 +27,8 @@ server.listen(process.env.PORT || 4000, (err) => {
     err ? console.dir("Server failed...") : console.dir("Server running on port http://localhost:4000")
 })
 
-server.use("/api/memes", require("./memes/memes.routes"))
-server.use("/api/users", require("./users/users.routes"))
+server.use("/api/memes", require("./api/memes/memes.routes"))
+server.use("/api/users", require("./api/users/users.routes"))
 
 server.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
