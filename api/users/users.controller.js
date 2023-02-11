@@ -1,5 +1,5 @@
 const Users = require("./users.service");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Promise = require("bluebird");
 const {getUserSingIn} = require("../utils/userSignInJwt");
